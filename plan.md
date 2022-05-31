@@ -21,7 +21,8 @@
 
 ## Steps
 
-- [ ] Create a mockup of the calculator
-- [ ] Create HTML for the calculator
+- [x] Create a mockup of the calculator
+- [ ] Add basic HTML
+- [ ] Add basic CSS 
 - [ ] Create calculutor operations in JS
 - [ ] ... TBC
