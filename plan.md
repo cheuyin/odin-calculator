@@ -17,8 +17,10 @@
 - [ ] You can't enter two operators in a row
 - [ ] Every time you enter an operator after a number, show the number + operator pair on a sub-line and clear the main-line for another input
 - [ ] You can change the operator of a number-operator pair assuming nothing has been computed yet
+- [ ] Do not allow numbers to overflow off the screen (use scientific notation for very large numbers)
 
-# Steps
+## Steps
+
 - [ ] Create a mockup of the calculator
 - [ ] Create HTML for the calculator
 - [ ] Create calculutor operations in JS
