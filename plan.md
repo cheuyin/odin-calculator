@@ -10,6 +10,7 @@
 - [ ] Has a "clear" button
 - [ ] Has a backspace button
 - [ ] Has keyboard support
+- [ ] Buttons have a "press-down" effect
 - [ ] Allow users to input floating points
 - [ ] Display error message when user divides by 0
 - [ ] Round answers with a long line of decimals
@@ -22,7 +23,7 @@
 ## Steps
 
 - [x] Create a mockup of the calculator
-- [ ] Add basic HTML
-- [ ] Add basic CSS 
+- [x] Add basic HTML
+- [x] Add basic CSS 
 - [ ] Create calculutor operations in JS
 - [ ] ... TBC
