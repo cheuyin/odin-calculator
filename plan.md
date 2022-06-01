@@ -27,4 +27,5 @@
 - [x] Add basic CSS
 - [x] Create calculator operations in JS
 - [x] Allow calculator to execute a basic operation such as 3 + 5 = 8
+- [x] Enable the addition of multi-digit numbers
 - [ ] 

@@ -17,13 +17,9 @@ buttons.forEach(button => button.addEventListener("click", (event) => {
 
 function buttonClickHandler(button) {  
   if (button.classList.contains("operator")) {
-    currentOperation.operator = button.textContent;
+    operatorButtonHandler(button);
   } else if (button.classList.contains("number")) {
-    if (currentOperation.firstNum === "") {
-      currentOperation.firstNum = button.textContent;
-    } else {
-      currentOperation.secondNum = button.textContent;
-    }
+    numberButtonHandler(button);
   } else if (button.classList.contains("equals")) {
     equalsButtonHandler();
   }
@@ -47,11 +43,23 @@ function equalsButtonHandler() {
       currentOperation.answer = +currentOperation.firstNum + +currentOperation.secondNum;
       break;
     default:
-      alert("Something went wrong with clicking the equals button");
+      alert("Something went wrong with clicking the 'equals' button");
   }
-
 }
 
+function numberButtonHandler(button) {
+  const value = button.textContent;
+
+  if (currentOperation.operator === "") {
+    currentOperation.firstNum += value;
+  } else {
+    currentOperation.secondNum += value;
+  }
+}
+
+function operatorButtonHandler(button) {
+  currentOperation.operator = button.textContent;
+}
 
 
 // Math operators
