@@ -25,5 +25,5 @@
 - [x] Create a mockup of the calculator
 - [x] Add basic HTML
 - [x] Add basic CSS 
-- [ ] Create calculutor operations in JS
-- [ ] ... TBC
+- [x] Create calculator operations in JS
+- [ ] Allow calculator to execute a basic operation such as 3 + 5 = 8
