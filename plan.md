@@ -10,7 +10,7 @@
 - [ ] Has a "clear" button
 - [ ] Has a backspace button
 - [ ] Has keyboard support
-- [ ] Buttons have a "press-down" effect
+- [ ] Buttons have a "press-down" effect in CSS
 - [ ] Allow users to input floating points
 - [ ] Display error message when user divides by 0
 - [ ] Round answers with a long line of decimals
@@ -28,4 +28,5 @@
 - [x] Create calculator operations in JS
 - [x] Allow calculator to execute a basic operation such as 3 + 5 = 8
 - [x] Enable the addition of multi-digit numbers
-- [ ] 
+- [x] Enable all operators
+- [ ] Enable clear and delete buttons

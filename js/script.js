@@ -2,7 +2,7 @@ const currentOperation = {
   firstNum: "",
   operator: "",
   secondNum: "",
-  equalsButton: false,
+  calculate: false,
   answer: ""
 }
 
@@ -21,14 +21,14 @@ function buttonClickHandler(button) {
   } else if (button.classList.contains("number")) {
     numberButtonHandler(button);
   } else if (button.classList.contains("equals")) {
-    equalsButtonHandler();
+    calculate();
   }
 
   renderScreen();
 }
 
 function renderScreen() {
-  if (currentOperation.equalsButton) {
+  if (currentOperation.calculate) {
     mainLine.textContent = currentOperation.answer;
     return;
   }
@@ -36,12 +36,22 @@ function renderScreen() {
   mainLine.textContent = `${currentOperation.firstNum} ${currentOperation.operator} ${currentOperation.secondNum}`
 }
 
-function equalsButtonHandler() {
-  currentOperation.equalsButton = true;
+function calculate() {
+  currentOperation.calculate = true;
   switch (currentOperation.operator) {
     case "+":
-      currentOperation.answer = +currentOperation.firstNum + +currentOperation.secondNum;
+      currentOperation.answer = add(+currentOperation.firstNum, +currentOperation.secondNum);
       break;
+    case "÷":
+      currentOperation.answer = divide(+currentOperation.firstNum, +currentOperation.secondNum);
+      break;
+    case "−":
+      currentOperation.answer = subtract(+currentOperation.firstNum, +currentOperation.secondNum);
+      break;
+    case "×":
+      currentOperation.answer = multiply(+currentOperation.firstNum, +currentOperation.secondNum);
+      break;
+
     default:
       alert("Something went wrong with clicking the 'equals' button");
   }
@@ -60,6 +70,7 @@ function numberButtonHandler(button) {
 function operatorButtonHandler(button) {
   currentOperation.operator = button.textContent;
 }
+
 
 
 // Math operators
