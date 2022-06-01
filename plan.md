@@ -29,4 +29,5 @@
 - [x] Allow calculator to execute a basic operation such as 3 + 5 = 8
 - [x] Enable the addition of multi-digit numbers
 - [x] Enable all operators
-- [ ] Enable clear and delete buttons
+- [x] Enable the "clear" button
+- [ ] Activate the subline

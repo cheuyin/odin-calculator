@@ -1,19 +1,20 @@
 const currentOperation = {
-  firstNum: "",
+  firstNum: "0",
   operator: "",
   secondNum: "",
   calculate: false,
   answer: ""
 }
 
-const mainLine = document.querySelector(".main-line");
+const screenMainLine = document.querySelector(".main-line");
+const clearButton = document.querySelector(".buttons .clear");
+const deleteButton = document.querySelector(".buttons .delete");
 
 // You press a button, something shows up on the calculator screen
 const buttons = document.querySelectorAll(".buttons .row div");
-buttons.forEach(button => button.addEventListener("click", (event) => {
-  buttonClickHandler(event.target)
-}));
+buttons.forEach(button => button.addEventListener("click", event => buttonClickHandler(event.target)));
 
+window.onload(renderScreen());
 
 function buttonClickHandler(button) {  
   if (button.classList.contains("operator")) {
@@ -22,6 +23,10 @@ function buttonClickHandler(button) {
     numberButtonHandler(button);
   } else if (button.classList.contains("equals")) {
     calculate();
+  } else if (button.classList.contains("clear")) {
+    clearButtonHandler();
+  } else if (button.classList.contains("delete")) { 
+    deleteButtonHandler();
   }
 
   renderScreen();
@@ -29,11 +34,11 @@ function buttonClickHandler(button) {
 
 function renderScreen() {
   if (currentOperation.calculate) {
-    mainLine.textContent = currentOperation.answer;
+    screenMainLine.textContent = currentOperation.answer;
     return;
   }
 
-  mainLine.textContent = `${currentOperation.firstNum} ${currentOperation.operator} ${currentOperation.secondNum}`
+  screenMainLine.textContent = `${currentOperation.firstNum} ${currentOperation.operator} ${currentOperation.secondNum}`
 }
 
 function calculate() {
@@ -61,7 +66,11 @@ function numberButtonHandler(button) {
   const value = button.textContent;
 
   if (currentOperation.operator === "") {
-    currentOperation.firstNum += value;
+    if (currentOperation.firstNum === "0") {
+      currentOperation.firstNum = value;
+    } else {
+      currentOperation.firstNum += value;
+    }
   } else {
     currentOperation.secondNum += value;
   }
@@ -69,6 +78,14 @@ function numberButtonHandler(button) {
 
 function operatorButtonHandler(button) {
   currentOperation.operator = button.textContent;
+}
+
+function clearButtonHandler() {
+  currentOperation.firstNum = "0";
+  currentOperation.operator = "";
+  currentOperation.secondNum = "";
+  currentOperation.calculate = false;
+  currentOperation.answer = "";
 }
 
 
