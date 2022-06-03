@@ -28,14 +28,14 @@ h1 {
   border: 2px solid black;
 }
 
-.calculator .screen .sub-line {
+.calculator .screen .subline {
   display: flex;
   align-items: center;
   justify-content: right; 
   height: 20px;
 }
 
-.calculator .screen .main-line {
+.calculator .screen .mainline {
   height: 40px;
   font-size: 24px;
   display: flex;

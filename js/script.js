@@ -6,15 +6,17 @@ const currentOperation = {
   answer: ""
 }
 
-const screenMainLine = document.querySelector(".main-line");
+const screenMainline = document.querySelector(".mainline");
+const screenSubline = document.querySelector(".subline");
 const clearButton = document.querySelector(".buttons .clear");
 const deleteButton = document.querySelector(".buttons .delete");
+
 
 // You press a button, something shows up on the calculator screen
 const buttons = document.querySelectorAll(".buttons .row div");
 buttons.forEach(button => button.addEventListener("click", event => buttonClickHandler(event.target)));
 
-window.onload(renderScreen());
+window.onload = renderScreen;
 
 function buttonClickHandler(button) {  
   if (button.classList.contains("operator")) {
@@ -33,14 +35,31 @@ function buttonClickHandler(button) {
 }
 
 function renderScreen() {
+  // If ready to calculate
   if (currentOperation.calculate) {
-    screenMainLine.textContent = currentOperation.answer;
+    screenSubline.textContent = `${currentOperation.firstNum} ${currentOperation.operator} ${currentOperation.secondNum} =`;
+    screenMainline.textContent = currentOperation.answer;
     return;
   }
 
-  screenMainLine.textContent = `${currentOperation.firstNum} ${currentOperation.operator} ${currentOperation.secondNum}`
+  // Rendering the subline
+  if (currentOperation.operator !== "" && currentOperation.firstNum !== "") {
+    screenSubline.textContent = `${currentOperation.firstNum} ${currentOperation.operator}`
+  } else {
+    screenSubline.textContent = "";
+  }
+
+  // Rendering the mainline
+  if (currentOperation.operator === "" && currentOperation.secondNum === "") {
+    screenMainline.textContent = currentOperation.firstNum;
+  } else if (currentOperation.operator !== "" || currentOperation.firstNum !== "" || currentOperation.secondNum === "") {
+    screenMainline.textContent = currentOperation.secondNum;
+  } else {
+    screenMainline.textContent = "";
+  }
 }
 
+// Only call this function when you have two numbers and an operator
 function calculate() {
   currentOperation.calculate = true;
   switch (currentOperation.operator) {
@@ -77,10 +96,19 @@ function numberButtonHandler(button) {
 }
 
 function operatorButtonHandler(button) {
+  // If an operator has already been pressed
+  if (currentOperation.operator !== "") {
+    calculate();
+    currentOperation.firstNum = currentOperation.answer;
+    currentOperation.calculate = false;
+    currentOperation.secondNum = "";
+  }
+
   currentOperation.operator = button.textContent;
 }
 
 function clearButtonHandler() {
+  // Reset operation data
   currentOperation.firstNum = "0";
   currentOperation.operator = "";
   currentOperation.secondNum = "";

@@ -16,7 +16,7 @@
 - [ ] Round answers with a long line of decimals
 - [ ] Evaluate one pair of numbers at a time (`12 + 7 - 5 * 3 = 42`)
 - [ ] You can't enter two operators in a row
-- [ ] Every time you enter an operator after a number, show the number + operator pair on a sub-line and clear the main-line for another input
+- [ ] Every time you enter an operator after a number, show the number + operator pair on a sub-line and clear the mainline for another input
 - [ ] You can change the operator of a number-operator pair assuming nothing has been computed yet
 - [ ] Do not allow numbers to overflow off the screen (use scientific notation for very large numbers)
 
@@ -31,3 +31,4 @@
 - [x] Enable all operators
 - [x] Enable the "clear" button
 - [ ] Activate the subline
+- [ ] 
