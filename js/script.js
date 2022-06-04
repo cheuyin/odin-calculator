@@ -8,8 +8,6 @@ const currentOperation = {
 
 const screenMainline = document.querySelector(".mainline");
 const screenSubline = document.querySelector(".subline");
-const clearButton = document.querySelector(".buttons .clear");
-const deleteButton = document.querySelector(".buttons .delete");
 
 
 // You press a button, something shows up on the calculator screen
