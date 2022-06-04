@@ -82,6 +82,9 @@ function calculate() {
 }
 
 function numberButtonHandler(button) {
+  // If the = sign is showing, disable number manipulation
+  if (currentOperation.calculate === true) return;
+
   const value = button.textContent;
 
   if (currentOperation.operator === "") {
@@ -96,8 +99,8 @@ function numberButtonHandler(button) {
 }
 
 function operatorButtonHandler(button) {
-  // If an operator has already been pressed
-  if (currentOperation.operator !== "") {
+  // If an operator has already been pressed and there are 2 numbers entered
+  if (currentOperation.operator !== "" && currentOperation.secondNum !== "") {
     calculate();
     currentOperation.firstNum = currentOperation.answer;
     currentOperation.calculate = false;

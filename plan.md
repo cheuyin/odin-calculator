@@ -30,5 +30,7 @@
 - [x] Enable the addition of multi-digit numbers
 - [x] Enable all operators
 - [x] Enable the "clear" button
-- [ ] Activate the subline
-- [ ] 
+- [x] Activate the subline
+- [x] Disable button-pressing at inappropriate times
+- [ ] Enable decimal inputs
+- [ ] Enable DEL button
