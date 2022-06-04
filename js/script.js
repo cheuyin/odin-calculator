@@ -27,6 +27,8 @@ function buttonClickHandler(button) {
     clearButtonHandler();
   } else if (button.classList.contains("delete")) { 
     deleteButtonHandler();
+  } else if (button.classList.contains("decimal")) {
+    decimalButtonHandler();
   }
 
   renderScreen();
@@ -59,6 +61,12 @@ function renderScreen() {
 
 // Only call this function when you have two numbers and an operator
 function calculate() {
+  // Do not calculate if either the first num or the second num is a decimal
+  if (currentOperation.firstNum === "." || currentOperation.secondNum === ".") return;
+
+  // Do not calculate if the second number is empty
+  if (currentOperation.secondNum === "") return;
+
   currentOperation.calculate = true;
   switch (currentOperation.operator) {
     case "+":
@@ -97,6 +105,10 @@ function numberButtonHandler(button) {
 }
 
 function operatorButtonHandler(button) {
+  // Do not execute if either the first num or the second num is a decimal
+  if (currentOperation.firstNum === "." || currentOperation.secondNum === ".") return;
+
+
   // If an operator has already been pressed and there are 2 numbers entered
   if (currentOperation.operator !== "" && currentOperation.secondNum !== "") {
     calculate();
@@ -117,6 +129,18 @@ function clearButtonHandler() {
   currentOperation.answer = "";
 }
 
+function decimalButtonHandler() {
+  // If the focus is currently on the first number
+  if (currentOperation.operator === "" && currentOperation.secondNum === "") {
+    if (!currentOperation.firstNum.includes(".")) {
+      currentOperation.firstNum += ".";
+    }
+  } else { // Else add decimal to the second number
+    if (!currentOperation.secondNum.includes(".") && !currentOperation.calculate) {
+      currentOperation.secondNum += ".";
+    }
+  }
+}
 
 
 // Math operators

@@ -31,5 +31,5 @@
 - [x] Enable the "clear" button
 - [x] Activate the subline
 - [x] Disable button-pressing at inappropriate times
-- [ ] Enable decimal inputs
+- [x] Enable decimal inputs
 - [ ] Enable DEL button
