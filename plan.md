@@ -8,11 +8,11 @@
   - [x] Multiply
   - [x] Divide
 - [x] Has a "clear" button
-- [ ] Has a backspace button
+- [x] Has a backspace button
 - [ ] Has keyboard support
 - [ ] Buttons have a "press-down" effect in CSS
-- [ ] Allow users to input floating points
-- [ ] Display error message when user divides by 0
+- [x] Allow users to input floating points
+- [x] Display error message when user divides by 0
 - [ ] Round answers with a long line of decimals
 - [x] Evaluate one pair of numbers at a time (`12 + 7 - 5 * 3 = 42`)
 - [x] Every time you enter an operator after a number, show the number + operator pair on a sub-line and clear the mainline for another input
@@ -32,8 +32,8 @@
 - [x] Activate the subline
 - [x] Disable button-pressing at inappropriate times
 - [x] Enable decimal inputs
-- [ ] Enable DEL button
+- [x] Enable DEL button
 - [ ] Round off long decimals
-- [ ] Create error message when dividing by zero
+- [x] Create error message when dividing by zero
 - [ ] Add keyboard support
 - [ ] Convert to scientific notation when answers get to a certain length
