@@ -33,3 +33,7 @@
 - [x] Disable button-pressing at inappropriate times
 - [x] Enable decimal inputs
 - [ ] Enable DEL button
+- [ ] Round off long decimals
+- [ ] Create error message when dividing by zero
+- [ ] Add keyboard support
+- [ ] Convert to scientific notation when answers get to a certain length

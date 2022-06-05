@@ -1,7 +1,7 @@
 const currentOperation = {
   firstNum: "0",
   operator: "",
-  secondNum: "",
+  secondNum: "0",
   calculate: false,
   answer: ""
 }
@@ -50,7 +50,7 @@ function renderScreen() {
   }
 
   // Rendering the mainline
-  if (currentOperation.operator === "" && currentOperation.secondNum === "") {
+  if (currentOperation.operator === "" && currentOperation.secondNum === "0") {
     screenMainline.textContent = currentOperation.firstNum;
   } else if (currentOperation.operator !== "" || currentOperation.firstNum !== "" || currentOperation.secondNum === "") {
     screenMainline.textContent = currentOperation.secondNum;
@@ -61,11 +61,17 @@ function renderScreen() {
 
 // Only call this function when you have two numbers and an operator
 function calculate() {
+  // Check if dividing by 0
+  if (+currentOperation.secondNum === 0) {
+    alert ("You can't divide by 0!");
+    return;
+  }
+
   // Do not calculate if either the first num or the second num is a decimal
   if (currentOperation.firstNum === "." || currentOperation.secondNum === ".") return;
 
   // Do not calculate if the second number is empty
-  if (currentOperation.secondNum === "") return;
+  if (currentOperation.secondNum === "0") return;
 
   currentOperation.calculate = true;
   switch (currentOperation.operator) {
@@ -100,8 +106,12 @@ function numberButtonHandler(button) {
       currentOperation.firstNum += value;
     }
   } else {
-    currentOperation.secondNum += value;
-  }
+      if (currentOperation.secondNum === "0") {
+        currentOperation.secondNum = value;
+      } else {
+        currentOperation.secondNum += value;
+      } 
+    }
 }
 
 function operatorButtonHandler(button) {
@@ -110,11 +120,11 @@ function operatorButtonHandler(button) {
 
 
   // If an operator has already been pressed and there are 2 numbers entered
-  if (currentOperation.operator !== "" && currentOperation.secondNum !== "") {
+  if (currentOperation.operator !== "" && currentOperation.secondNum !== "0") {
     calculate();
     currentOperation.firstNum = currentOperation.answer;
     currentOperation.calculate = false;
-    currentOperation.secondNum = "";
+    currentOperation.secondNum = "0";
   }
 
   currentOperation.operator = button.textContent;
@@ -124,14 +134,14 @@ function clearButtonHandler() {
   // Reset operation data
   currentOperation.firstNum = "0";
   currentOperation.operator = "";
-  currentOperation.secondNum = "";
+  currentOperation.secondNum = "0";
   currentOperation.calculate = false;
   currentOperation.answer = "";
 }
 
 function decimalButtonHandler() {
   // If the focus is currently on the first number
-  if (currentOperation.operator === "" && currentOperation.secondNum === "") {
+  if (currentOperation.operator === "" && currentOperation.secondNum === "0") {
     if (!currentOperation.firstNum.includes(".")) {
       currentOperation.firstNum += ".";
     }
@@ -140,6 +150,29 @@ function decimalButtonHandler() {
       currentOperation.secondNum += ".";
     }
   }
+}
+
+function deleteButtonHandler() {
+  // If focused on the first number 
+  if (currentOperation.operator === "" && currentOperation.secondNum === "0") {
+    if (currentOperation.firstNum !== "") { // Make sure first num isn't empty
+      currentOperation.firstNum = currentOperation.firstNum.slice(0, -1);
+    }
+  } else if (currentOperation.operator !== "" && !currentOperation.calculate) { // If focused on the second number
+      if (currentOperation.secondNum !== "0") {
+        currentOperation.secondNum = currentOperation.secondNum.slice(0, -1);
+      }
+  }
+
+  // If deleting leads to an empty string, replace that string with 0
+  if (currentOperation.firstNum === "") {
+    currentOperation.firstNum = "0";
+  }
+
+  if (currentOperation.secondNum === "") {
+    currentOperation.secondNum = "0";
+  }
+
 }
 
 
