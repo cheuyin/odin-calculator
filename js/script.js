@@ -76,16 +76,16 @@ function calculate() {
   currentOperation.calculate = true;
   switch (currentOperation.operator) {
     case "+":
-      currentOperation.answer = add(+currentOperation.firstNum, +currentOperation.secondNum);
+      currentOperation.answer = roundToFourDecimals(add(+currentOperation.firstNum, +currentOperation.secondNum));
       break;
     case "÷":
-      currentOperation.answer = divide(+currentOperation.firstNum, +currentOperation.secondNum);
+      currentOperation.answer = roundToFourDecimals(divide(+currentOperation.firstNum, +currentOperation.secondNum));
       break;
     case "−":
-      currentOperation.answer = subtract(+currentOperation.firstNum, +currentOperation.secondNum);
+      currentOperation.answer = roundToFourDecimals(subtract(+currentOperation.firstNum, +currentOperation.secondNum));
       break;
-    case "×":
-      currentOperation.answer = multiply(+currentOperation.firstNum, +currentOperation.secondNum);
+    case "×": 
+      currentOperation.answer = roundToFourDecimals(multiply(+currentOperation.firstNum, +currentOperation.secondNum));
       break;
 
     default:
@@ -173,6 +173,10 @@ function deleteButtonHandler() {
     currentOperation.secondNum = "0";
   }
 
+}
+
+function roundToFourDecimals(num) {
+  return Math.round(num * 10000) / 10000;
 }
 
 
